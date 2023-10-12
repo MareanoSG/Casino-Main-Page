@@ -51,11 +51,13 @@ function tirarDados() {
   const total = dado1 + dado2;
 
   if (total == usDado) {
+    document.getElementById("victoria").play();
     updateUserPoints(betInput.value)
     resultElement.textContent = '¡Has ganado!';
     actualizarPuntos();
   }
   else {
+    document.getElementById("derrota").play();
     updateUserPoints(-betInput.value)
     resultElement.textContent = 'Has perdido.';
     actualizarPuntos();
