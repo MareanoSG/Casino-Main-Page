@@ -124,6 +124,7 @@ button {
   border: none;
   color: white;
   cursor: pointer;
+  font-size: 20px;
 }
 button::-moz-focus-inner,
 input::-moz-focus-inner {
@@ -131,9 +132,22 @@ input::-moz-focus-inner {
   padding: 0;
 }
 .boton{
-  background-color: rgb(136, 136, 7);
+  background-color: hsl(0, 100%, 60%);
   border-radius: 10px;
   width: 15%;
+}
+input[type="number"] {
+    width: 5%;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px black;
+    background-color: #ffffff;
+    color: #000000;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+p[id="result"]{
+  font-size: 30px;
 }
 
 
