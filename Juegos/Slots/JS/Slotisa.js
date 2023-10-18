@@ -1,4 +1,5 @@
 const betInput = document.querySelector(".bet-input");
+let canClick = true; // Variable de control para habilitar o deshabilitar el clic
 
 let user = JSON.parse(localStorage.getItem('user'));
 
@@ -36,9 +37,12 @@ window.addEventListener('resize', function () {
 
 boton.addEventListener("mousedown", function () {
   inicio.style.display = "flex";
-  boton.style.display = "none"
-  palancaAbajo.style.display = "block"
+  boton.style.display = "none";
+  palancaAbajo.style.display = "block";
   tirada();
+
+  const audioPalanca = document.getElementById("audioPalanca");
+  audioPalanca.play();
 });
 
 palancaAbajo.addEventListener("mouseup", function () {
@@ -46,22 +50,25 @@ palancaAbajo.addEventListener("mouseup", function () {
   palancaAbajo.style.display = "none"
 });
 
+const audioJackpot = document.getElementById("audio-jackpot");
 
 function tirada() {
+  if (!canClick) {
+    return; // Si no se puede hacer clic, sal de la función
+  }
   gif1.style.display = "inline"
   gif2.style.display = "inline"
   gif3.style.display = "inline"
 
+  audioJackpot.play();
 
   const random1 = Math.floor(Math.random() * iconos.length);
   const random2 = Math.floor(Math.random() * iconos.length);
   const random3 = Math.floor(Math.random() * iconos.length);
 
-
   const randomIconos1 = iconos[random1];
   const randomIconos2 = iconos[random2];
   const randomIconos3 = iconos[random3];
-
 
   const imagen1 = document.querySelector(".imagen1");
   imagen1.style.display = "none";
@@ -71,8 +78,6 @@ function tirada() {
 
   const imagen3 = document.querySelector(".imagen3");
   imagen3.style.display = "none";
-
-
 
   setTimeout(function () {
     imagen1.src = randomIconos1;
@@ -96,6 +101,8 @@ function tirada() {
   console.log(imagen2);
   console.log(imagen3);
 
+  const audioGanaste = document.getElementById("audio-ganaste");
+  const audioPerdiste = document.getElementById("audio-perdiste");
   const mensajeContainer = document.getElementById("mensajeContainer");
   mensajeContainer.innerHTML = "";
 
@@ -108,11 +115,13 @@ function tirada() {
       updateUserPoints(betInput.value)
       actualizarPuntos();
 
+      audioGanaste.play();
+
       setTimeout(function () {
-        mensaje.classList.remove("ganaste");
         mensajeContainer.removeChild(mensaje);
-      }, 4500)
-    } else {
+      }, 4000)
+    }
+    else {
       const mensaje = document.createElement("p");
       mensaje.classList.add("perdiste");
       mensaje.textContent = "¡Intentalo de nuevo!";
@@ -120,15 +129,19 @@ function tirada() {
       updateUserPoints(-betInput.value)
       actualizarPuntos();
 
-
+      
+      audioPerdiste.play();
       setTimeout(function () {
-        mensaje.classList.remove("perdiste");
         mensajeContainer.removeChild(mensaje);
-        actualizarPuntos();
-  
-      }, 2500)
+      }, 4000)
     }
-  }, 5200);
+  }, 5300);
+
+  // Deshabilita el clic durante 5 segundos
+  canClick = false;
+  setTimeout(function () {
+    canClick = true; // Habilita el clic nuevamente después de 5 segundos
+  }, 3000); // 5000 milisegundos (5 segundos)
 }
 
 function instrucciones() {

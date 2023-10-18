@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="Icon" href="./imagenes/siete.png">
+    <link href="https://fonts.cdnfonts.com/css/casino" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/slot-style.css">
     <title>Maquina Traga Monedas</title>
 </head>
@@ -21,7 +22,8 @@
     <div class="reglas">
         <button onclick="openModal()" class="modal-open modal-open--help"><div><img src="./imagenes/Coin.png" alt="coin-img" draggable="false"></div></button>
     </div>
-    <button onclick="openBet()" class="open-bet"><div><img src="imagenes/Coin-bet.png" alt="coin-img" draggable="false"></div></button>
+    
+    <button onclick="openBet()" class="open-bet" id="myModal"><div><img src="imagenes/Coin-bet.png" alt="coin-img" draggable="false"></div></button>
 
 
     <div class="container_todo">
@@ -31,6 +33,8 @@
                     <img class="imagen1" src="./imagenes/diamond.png" alt="Icono 1">
                     <img class="imagen2" src="./imagenes/bell.png" alt="Icono 2">
                     <img class="imagen3" src="./imagenes/siete.png" alt="Icono 3">
+
+                    <audio id="audio-jackpot" src="./sonidos/jackpot_bHjZoMWM.wav"></audio>
             
                     <img class="Gif1" id="gif1" src="gif/gifFinalFinal.gif" style="display: none;">
                     <img class="Gif2" id="gif2" src="gif/gifFinalFinal.gif" style="display: none;">
@@ -63,8 +67,16 @@
         <div class="container_palanca">
             <img src="./imagenes/Palanca-Arriba.png" class="boton-palanca" id="boton" alt="">
             <img src="./imagenes/Palanca-Abajo.png" id="palancaAbajo" alt="" style="display: none;">
+
+            <audio id="audioPalanca" src="./sonidos/lever.mp3"></audio>  
         </div>
     </div>
+
+    <div id="mensajeContainer">
+        <audio id="audio-ganaste" src="./sonidos/win.mp3"></audio>
+        <audio id="audio-perdiste" src="./sonidos/lose.mp3"></audio>
+    </div>
+    
 
     <div id="myBetModal" class="modal">
         <img src="imagenes/modal-img.png" alt="modal-background-img">
@@ -73,8 +85,7 @@
           <label for="bet-input">Apuesta</label>
           <input type="number" name="bet-input" class="bet-input" id="bet-input" placeholder="000" value="1" min="1">
         </div>
-
-    <div id="mensajeContainer"></div>
+    </div>
 
     <script src="./JS/Slotisa.js"></script>
 </body>

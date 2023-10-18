@@ -4,15 +4,7 @@
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: 'Flat-Italic';
-    src:url(../Font/Flat-Italic.ttf);
-}
-
-@font-face {
-    font-family: 'Filled-Marqued-Italic';
-    src: url(../Font/Font-Win/Filled-Marqued-Italic.ttf);
-}
+@import url('https://fonts.cdnfonts.com/css/casino');
 
 body{
     background: url(../imagenes/Fondo-Slotisa-Plata.png) no-repeat center center fixed;
@@ -86,7 +78,7 @@ body{
 #palancaAbajo{
     height: 250px;
     width: 70px;
-    margin-top: 140px;
+    
 }
 
 .container_palanca {
@@ -98,7 +90,7 @@ body{
 
 .perdiste{
     font-size: 80px;
-    font-family: 'Flat-Italic';
+    font-family: 'Casino Flat', sans-serif;
     font-weight: 500;
     color: red;
     -webkit-text-stroke: 1.5px rgb(226, 173, 0);
@@ -122,7 +114,7 @@ body{
 /* Aplicar la animación a la etiqueta que deseas agrandar y achicar */
 .ganaste{
     font-size: 70px;
-    font-family: 'Filled-Marqued-Italic';
+    font-family: 'Casino 3D Filled Marquee', sans-serif;
     font-weight: 400;
     color: rgb(9, 163, 50);
     -webkit-text-stroke: 1.5px rgb(9, 69, 25);
@@ -308,106 +300,105 @@ body{
   }
 
   @media (min-width:1800px){
-    .container_iconos {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 550px;
-    }
+  .container_iconos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 550px;
+  }
 
-    .container_palanca {
-        position: absolute;
-        bottom: 0;
-        right: 22.9%;
-        top: 30%;
-    }
-
+  .container_palanca {
+    position: absolute;
+    bottom: 0;
+    right: 22.9%;
+    top: 30%;
+  }
 }
 
 .modal-open-2 {
-    background: none;
-    border: none;
-    color: #000;
-    cursor: pointer;
-    position: absolute;
-    margin-inline: 1vw;
-    margin-block: 1vw;
-    width: 80px;
-    height: 80px;
-    top: 0;
-    left: 0;
-  }
-  
-  .modal-open-2::-moz-focus-inner,
-  input::-moz-focus-inner {
-    border: 0; 
-    padding: 0;
-    position: fixed;
-  }
-  
-  .modal-open-2:hover img{
-    transition: transform 500ms ease;
-    transform: rotate(360deg); 
-  }
-  
-  .modal-open-2 > div{
-    position: relative;
-  }
-  
-  .modal-open-2 > div img{
-    width: 100%;
-  }
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  position: absolute;
+  margin-inline: 1vw;
+  margin-block: 1vw;
+  width: 80px;
+  height: 80px;
+  top: 0;
+  left: 0;
+}
 
+.modal-open-2::-moz-focus-inner,input::-moz-focus-inner {
+  border: 0; 
+  padding: 0;
+  position: fixed;
+}
 
-  .open-bet{
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    filter: hue-rotate(200deg);
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  .open-bet img{
-    height: 80px;
-    width: 80px;
-  }
-  .open-bet:hover{
-    transition: transform 500ms ease;
-    transform: rotate(360deg); 
-  }
-  
-  #myBetModal .modal-content{
-    max-width: min(45vh, 60vw);
-    height: 100%;
-    text-align: center;
-    transform: translateY(66%);
-    overflow-y: scroll;
-    overscroll-behavior: contain;
-    color:#000;
-    font-weight: 800;
-    font-size: min(min(2rem,4vw), 2.6vh);
-  }
-  
-  .bet-input{
-    max-width: min(45vh, 60vw);
-    background: none;
-    outline: none;
-    border:none;
-    border-bottom: 2px black solid;
-    text-align: center;
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin-top: 10%;
-  }
+.modal-open-2:hover img{
+  transition: transform 500ms ease;
+  transform: rotate(360deg); 
+}
+
+.modal-open-2 > div{
+  position: relative;
+}
+
+.modal-open-2 > div img{
+  width: 100%;
+}
+
+.open-bet{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  filter: hue-rotate(200deg);
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: none;
+}
+
+.open-bet img{
+  height: 80px;
+  width: 80px;
+}
+
+.open-bet:hover{
+  transition: transform 500ms ease;
+  transform: rotate(360deg); 
+}
+
+#myBetModal .modal-content{
+  max-width: min(45vh, 60vw);
+  height: 100%;
+  text-align: center;
+  transform: translateY(66%);
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  color:#000;
+  font-weight: 800;
+  font-size: min(min(2rem,4vw), 2.6vh);
+}
+
+.bet-input{
+  max-width: min(45vh, 60vw);
+  background: none;
+  outline: none;
+  border:none;
+  border-bottom: 2px black solid;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-top: 10%;
+}
 
 .result-div{
-    position: absolute;
-    top: 50%;
-    left: 50%;     
-    transform: translate(-50%,-50%);
-
+  position: absolute;
+  top: 50%;
+  left: 50%;     
+  transform: translate(-50%,-50%);
 }
 
 #result-img{
@@ -415,38 +406,38 @@ body{
 }
 
 .modal-open-2 {
-    background: none;
-    border: none;
-    color: #000;
-    cursor: pointer;
-    position: absolute;
-    margin-inline: 1vw;
-    margin-block: 1vw;
-    width: 80px;
-    height: 80px;
-    top: 0;
-    left: 0;
-  }
-  
-  .modal-open-2::-moz-focus-inner,
-  input::-moz-focus-inner {
-    border: 0; 
-    padding: 0;
-    position: fixed;
-  }
-  
-  .modal-open-2:hover img{
-    transition: transform 500ms ease;
-    transform: rotate(360deg); 
-  }
-  
-  .modal-open-2 > div{
-    position: relative;
-  }
-  
-  .modal-open-2 > div img{
-    width: 100%;
-  }
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  position: absolute;
+  margin-inline: 1vw;
+  margin-block: 1vw;
+  width: 80px;
+  height: 80px;
+  top: 0;
+  left: 0;
+}
+
+.modal-open-2::-moz-focus-inner,input::-moz-focus-inner {
+  border: 0; 
+  padding: 0;
+  position: fixed;
+}
+
+.modal-open-2:hover img{
+  transition: transform 500ms ease;
+  transform: rotate(360deg); 
+}
+
+.modal-open-2 > div{
+  position: relative;
+}
+
+.modal-open-2 > div img{
+  width: 100%;
+}
+
 /* Contenedor de puntos totales */
 
 .contienepuntos{ 
@@ -455,9 +446,8 @@ body{
   color: white;
   display: flex;
   justify-content: end;
-  
- 
 }
+
 .puntos{
   position: fixed;
   color: white;
@@ -468,15 +458,12 @@ body{
   padding: 10px;
   margin: 10px;
   border: 1px solid white;
-   
 }
+
 .puntos h3{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 500;
   color: white;
   font-size: 1.2rem;
 }
-
 /* Fin contenedor de puntos totales */
-
-
