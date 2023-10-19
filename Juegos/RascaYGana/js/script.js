@@ -33,8 +33,10 @@ painting.onload = () => {
 
 let isPainting = false;
 let prevX, prevY; // Previous mouse position
+let canBet = true;
 
 function scratchPaint(event) {
+    canBet = false;
     if (isPainting && !finished) {
         playScratchSound()
         let radius = 50;
