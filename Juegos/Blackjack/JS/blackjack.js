@@ -13,6 +13,7 @@ var winSound = new Audio ('tablero/game-win.mp3');
 var tieSound= new Audio ('tablero/bruh-sound-effect-2-37927.mp3')
 var hidden;
 var deck;
+let canBet = true;
 
 var canHit = true; //allows the player (you) to draw while yourSum <= 21
 
@@ -65,14 +66,14 @@ function startGame() {
     }
     console.log(dealerSum);
 
-    for (let i = 0; i < 2; i++) {
+    /*for (let i = 0; i < 2; i++) {
         let cardImg = document.createElement("img");
         let card = deck.pop();
         cardImg.src = "./cards/" + card + ".png";
         yourSum += getValue(card);
         yourAceCount += checkAce(card);
         document.getElementById("your-cards").append(cardImg);
-    }
+    }*/
 
     console.log(yourSum);
     console.log(dineroUsuario);
@@ -84,6 +85,7 @@ function startGame() {
 
 
 function hit() {
+  canBet = false;
     if (!canHit) {
         return;
     }

@@ -76,6 +76,10 @@
         }
 
         function openBet() {
+            if(!canBet){
+                alert("Ya no puedes apostar");
+                return;
+            }
             document.getElementById("myBetModal").style.display = "flex";
             document.getElementById("myBetModal").classList.add("modal-active");
         }
