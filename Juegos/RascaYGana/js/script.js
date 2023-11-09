@@ -35,7 +35,21 @@ let isPainting = false;
 let prevX, prevY; // Previous mouse position
 let canBet = true;
 
-function scratchPaint(event) {
+(
+    preventCheat = () => {
+        const backBtn = document.querySelector(".modal-open-2");
+        backBtn.addEventListener("click", async (e) => {
+            e.preventDefault();
+            if (!canBet && !finished) {
+                await updateUserPoints(-betInput.value);
+                await actualizarPuntos();
+            }
+            window.location.href = "../../index.html";
+        })
+    }
+)()
+
+async function scratchPaint(event) {
     canBet = false;
     if (isPainting && !finished) {
         playScratchSound()
@@ -104,15 +118,15 @@ function scratchPaint(event) {
             resultDiv.innerHTML += '<img src="resources/win-img.png" alt="" id="result-img">'
             document.getElementById("my-canvas").style.display = "block";
             playWinSound();
-            updateUserPoints(betInput.value)
-            actualizarPuntos();
+            await updateUserPoints(betInput.value)
+            await actualizarPuntos();
         }
         else {
             resultDiv.innerHTML += '<img src="resources/lose-img.png" alt="" id="result-img">'
             document.getElementById("my-canvas").style.display = "none";
             playLoseSound();
-            updateUserPoints(-betInput.value)
-            actualizarPuntos();
+            await updateUserPoints(-betInput.value)
+            await actualizarPuntos();
         }
         setTimeout(() => {
             resetGame()
@@ -123,6 +137,7 @@ function scratchPaint(event) {
 function resetGame() {
     document.getElementById("my-canvas").style.display = "none";
     finished = false
+    canBet = true;
     numbers = []
     resultDiv.innerHTML = ""
     ticketNumbers.forEach(element => {
@@ -252,10 +267,10 @@ async function getUserPoints(username) {
 }
 actualizarPuntos();
 async function actualizarPuntos() {
-  try {
-    const puntos = await getUserPoints(user.id);
-    document.getElementById("ptstotales__text").textContent = 'Puntos: ' + puntos;
-  } catch (error) {
-    console.error("Error al obtener los puntos:", error);
-  }
+    try {
+        const puntos = await getUserPoints(user.id);
+        document.getElementById("ptstotales__text").textContent = 'Puntos: ' + puntos;
+    } catch (error) {
+        console.error("Error al obtener los puntos:", error);
+    }
 }

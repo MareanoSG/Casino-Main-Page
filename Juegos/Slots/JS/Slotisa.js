@@ -20,6 +20,7 @@ const gif1 = document.getElementById("gif1");
 const gif2 = document.getElementById("gif2");
 const gif3 = document.getElementById("gif3");
 
+let finished;
 
 const boton = document.getElementById("boton");
 const palancaAbajo = document.getElementById("palancaAbajo")
